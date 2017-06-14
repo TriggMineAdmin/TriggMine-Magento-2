@@ -1,0 +1,15 @@
+# Ignore everything
+/*
+
+# Must Have
+!.gitignore
+!README.MD
+
+# Magento Community module file
+!/app
+/app/*
+!/app/code
+/app/code/*
+!/app/code/Triggmine
+/app/code/Triggmine/*
+!/app/code/Triggmine/Connector
