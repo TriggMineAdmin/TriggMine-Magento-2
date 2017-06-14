@@ -1,9 +1,11 @@
 # Ignore everything
 /*
 
+composer.json
+
 # Must Have
-!.gitignore
-!README.MD
+!/.gitignore
+!/README.MD
 
 # Magento Community module file
 !/app
