@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="Triggmine_Connector::marketing_automation" title="Marketing Automation" module="Triggmine_Connector" sortOrder="100" parent="Magento_Backend::marketing" resource="Triggmine_Connector::contact"/>
+    </menu>
+</config>

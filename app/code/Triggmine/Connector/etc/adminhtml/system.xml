@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <tab id="tm_automation" translate="label" sortOrder="500">
+            <label>TRIGGMINE</label>
+        </tab>
+        <section id="triggmine_connector_api_credentials" translate="label" sortOrder="130" showInDefault="0" showInStore="1" showInWebsite="1">
+            <class>separator-top</class>
+            <label>API Credentials</label>
+            <tab>tm_automation</tab>
+            <resource>Triggmine_Connector::config</resource>
+            <group id="api" translate="label" type="text" sortOrder="10" showInDefault="0" showInStore="1" showInWebsite="1">
+                <label>Settings</label>
+                <attribute type="expanded">1</attribute>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="0" showInStore="1" showInWebsite="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="api_url" translate="label" type="text" sortOrder="20" showInDefault="0" showInStore="1" showInWebsite="1">
+                    <label>API URL</label>
+                    <comment><![CDATA[Don't have an account? <a href="https://client.triggmine.com/signup" target="_blank">Start your free trial</a>]]></comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="api_key" translate="label" type="text" sortOrder="30" showInDefault="0" showInStore="1" showInWebsite="1">
+                    <label>API KEY</label>
+                    <comment><![CDATA[Don't have an account? <a href="https://client.triggmine.com/signup" target="_blank">Start your free trial</a>]]></comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+             </group>
+        </section>
+        <section id="triggmine_connector_export" translate="label" sortOrder="140" showInDefault="0" showInStore="1" showInWebsite="1">
+            <class>separator-top</class>
+            <label>Export Orders History</label>
+            <tab>tm_automation</tab>
+            <resource>Triggmine_Connector::config</resource>
+            <group id="export" translate="label" type="text" sortOrder="20" showInDefault="0" showInStore="1" showInWebsite="1">
+                <label>Export</label>
+                <attribute type="expanded">1</attribute>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="0" showInStore="1" showInWebsite="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="startdate" translate="label" type="text" sortOrder="20" showInDefault="0" showInStore="1" showInWebsite="0">
+                    <label>Start Date</label>
+                    <comment><![CDATA[Date Format (Date/Month/Year)]]></comment>
+                    <frontend_model>Triggmine\Connector\Block\Calendar</frontend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="enddate" translate="label" type="text" sortOrder="30" showInDefault="0" showInStore="1" showInWebsite="0">
+                    <label>End Date</label>
+                    <comment><![CDATA[Date Format (Date/Month/Year)]]></comment>
+                    <frontend_model>Triggmine\Connector\Block\Calendar</frontend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+        <section id="triggmine_connector_customer_export" translate="label" sortOrder="140" showInDefault="0" showInStore="1" showInWebsite="1">
+            <class>separator-top</class>
+            <label>Export Customers History</label>
+            <tab>tm_automation</tab>
+            <resource>Triggmine_Connector::config</resource>
+            <group id="customer_export" translate="label" type="text" sortOrder="20" showInDefault="0" showInStore="1" showInWebsite="1">
+                <label>Export</label>
+                <attribute type="expanded">1</attribute>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="0" showInStore="1" showInWebsite="0">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="startdate" translate="label" type="text" sortOrder="20" showInDefault="0" showInStore="1" showInWebsite="0">
+                    <label>Start Date</label>
+                    <comment><![CDATA[Date Format (Date/Month/Year)]]></comment>
+                    <frontend_model>Triggmine\Connector\Block\Calendar</frontend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="enddate" translate="label" type="text" sortOrder="30" showInDefault="0" showInStore="1" showInWebsite="0">
+                    <label>End Date</label>
+                    <comment><![CDATA[Date Format (Date/Month/Year)]]></comment>
+                    <frontend_model>Triggmine\Connector\Block\Calendar</frontend_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
