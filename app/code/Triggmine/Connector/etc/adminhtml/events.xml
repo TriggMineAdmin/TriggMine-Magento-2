@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Event/etc/events.xsd">
+    <event name="admin_system_config_changed_section_triggmine_connector_api_credentials">
+        <observer name="tm_diagnostic_softcheck_api" instance="Triggmine\Connector\Observer\Diagnostic\SoftCheck"/>
+    </event>
+    <event name="admin_system_config_changed_section_triggmine_connector_export">
+        <observer name="tm_order_export" instance="Triggmine\Connector\Observer\Export\ExportOrderHistory"/>
+    </event>
+    <event name="admin_system_config_changed_section_triggmine_connector_customer_export">
+        <observer name="tm_customer_export" instance="Triggmine\Connector\Observer\Export\ExportCustomer"/>
+    </event>
+</config>
