@@ -1,8 +1,8 @@
 {
-  "name": "triggmine/connector",
+  "name": "Triggmine/Connector",
   "description": "ECOMMERCE EMAIL MARKETING AUTOMATION FOR YOUR IDEAL CUSTOMER EXPERIENCE",
   "type": "magento2-module",
-  "version": "3.0.17",
+  "version": "3.0.23.1",
   "license": [
     "LGPL-2.1",
     "GPL-3.0+"
