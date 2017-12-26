@@ -101,6 +101,13 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
             \Magento\Store\Model\ScopeInterface::SCOPE_WEBSITE
         );
     }
+    
+    public function isBot()
+	{
+	   preg_match('/bot|curl|spider|google|baidu|facebook|yandex|bing|aol|duckduckgo|teoma|yahoo|twitter^$/i', $_SERVER['HTTP_USER_AGENT'], $matches);
+	
+	   return (empty($matches)) ? false : true;
+	}
 
     public function getApiUrl()
     {

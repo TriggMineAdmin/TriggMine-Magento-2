@@ -34,7 +34,7 @@ class PageInit implements ObserverInterface
      */
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        if (!$this->helper->isEnabled()) {
+        if (!$this->helper->isEnabled() && $this->helper->isBot()) {
             return $this;
         }
         
