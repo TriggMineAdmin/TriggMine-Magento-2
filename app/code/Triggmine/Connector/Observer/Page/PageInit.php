@@ -34,13 +34,14 @@ class PageInit implements ObserverInterface
      */
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
-        if (!$this->helper->isEnabled() && $this->helper->isBot()) {
+        
+        if (!$this->helper->isEnabled() && !$this->helper->isBot()) {
             return $this;
         }
         
         try {
             
-            if ($product_id = $this->_registry->registry('current_product')->getId())
+            if ($product_id = $this->_registry->registry('current_product')->getId() && !$this->helper->isBot())
             {
 
                 $data = array(
