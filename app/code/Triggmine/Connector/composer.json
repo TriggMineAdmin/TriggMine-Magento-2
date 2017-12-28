@@ -8,8 +8,8 @@
     "GPL-3.0+"
   ],
   "require": {
-    "php": "~5.5.0|~5.6.0|~7.0.0|~7.1.0",
-    "magento/framework": "100.*"
+    "php": ">=5.5.0",
+    "magento/framework": "100.*|101.*"
   },
   "authors": [
     {
