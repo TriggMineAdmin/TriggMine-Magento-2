@@ -41,9 +41,10 @@ class PageInit implements ObserverInterface
         
         try {
             
-            if ($product_id = $this->_registry->registry('current_product')->getId() && !$this->helper->isBot())
+            if ($this->_registry->registry('current_product')->getId() && !$this->helper->isBot())
             {
-
+                $product_id = $this->_registry->registry('current_product')->getId();
+                
                 $data = array(
                   "user_agent"      => $_SERVER['HTTP_USER_AGENT'],
                   "customer"        => $this->helper->getCustomerLoginData(),

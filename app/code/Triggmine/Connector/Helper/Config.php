@@ -23,5 +23,5 @@ class Config extends \Magento\Framework\App\Helper\AbstractHelper
     const XML_PATH_CONNECTOR_EXPORT_CUSTOMER_DATE_TO     = 'triggmine_connector_customer_export/customer_export/enddate';
     
     /** DEVELOPER SECTION */
-    const XML_PATH_CONNECTOR_DEBUG_ENABLED      = false;
+    const XML_PATH_CONNECTOR_DEBUG_ENABLED      = true;
 }

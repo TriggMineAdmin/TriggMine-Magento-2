@@ -1,0 +1,99 @@
+<div id="popup-modal">
+    <p>Please wait while your products data is being exported to Triggmine. This popup will close automatically when the export is done.</p>
+    <div id="triggmine-export-status"></div>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Export in progress',
+                buttons: []
+            };
+
+            var popup = modal(options, $('#popup-modal'));
+
+            // $('#popup-modal').modal('openModal');
+        }
+    );
+</script>
+
+<script type="text/javascript">
+    console.log('triggmine product export');
+    
+    // get cookie value
+    function getCookie(name) {
+      var value = "; " + document.cookie;
+      var parts = value.split("; " + name + "=");
+      if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+                            
+    // prevent window being closed while export in progress
+    window.onbeforeunload = function (e) {
+        if (getCookie('exportInProgress') == 1) {
+            e = e || window.event;
+            // For IE and Firefox prior to version 4
+            if (e) {
+                e.returnValue = 'Sure?';
+            }
+            // For Safari
+            return 'Sure?';
+        }
+    };
+                            
+    document.addEventListener('DOMContentLoaded', function() {
+        var pages = <?= $this->_pages; ?>;
+        
+        var controllerUrl = "<?= $this->getUrl('triggmine_connector/export/exportproducts'); ?>";
+        console.log('controller url: '+controllerUrl);
+
+        var xhttp    = new XMLHttpRequest();
+        var bodyBase = 'apiURL=apiURL&apiToken=apiToken&pagesTotal='+pages+'&pageSize=pageSize&page=';
+                                
+        var exportStatus = document.getElementById('triggmine-export-status');
+                                
+        document.cookie = "exportInProgress=0";
+                                
+        // show message
+        // $('#popup-modal').modal('openModal');
+                                
+        function sendRequest(currentPage) {
+            body = bodyBase+currentPage;
+            xhttp.open("POST", controllerUrl, true);
+            xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                                
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == XMLHttpRequest.DONE ) {
+                    if (xhttp.status == 200) {
+                                            
+                        if (currentPage < pages) {
+                            document.cookie = "exportInProgress=1";
+                            exportStatus.innerHTML = 'Exporting page '+currentPage+'/'+pages;
+                            sendRequest(currentPage + 1);
+                        } else {
+                            document.cookie = "exportInProgress=0";
+                            // $('#popup-modal').modal('closeModal');
+                        }
+                                                
+                    } else {
+                        exportStatus.innerHTML = '<span style="color:red">An error occured. Please check your browser console for more info.</span>';
+                        console.error('TriggMine could not send an Ajax request');
+                    }
+                }
+            };
+                                    
+            xhttp.send(body);
+        }
+                                
+        sendRequest(1);
+    });
+</script>
