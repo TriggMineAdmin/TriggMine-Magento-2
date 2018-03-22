@@ -165,6 +165,82 @@
     </td>
 </tr>
 
+<script>
+require([
+    'jquery',
+    'Magento_Ui/js/modal/confirm'
+], function(jQuery, confirm){
+
+    (function($) {
+        var $storesList = $('[data-role=stores-list]');
+        $storesList.on('click', '[data-value]', function(event) {
+            var val = $(event.target).data('value');
+            var role = $(event.target).data('role');
+            var switcher = $('[data-role='+role+']');
+
+            event.preventDefault();
+
+            if (!switcher.val() || val != switcher.val()) {
+                switcher.val(val).trigger('change'); // Set the value & trigger event
+            }
+        });
+    })(jQuery);
+
+    var scopeSwitcherHandler;
+
+    function switchScopeForTriggmine(obj) {
+        var switcher = jQuery(obj);
+        var scopeId = switcher.val();
+        var scopeParams = '';
+        if (scopeId) {
+            scopeParams = switcher.data('param') + '/' + scopeId + '/';
+        }
+
+        if (obj.switchParams) {
+            scopeParams += obj.switchParams;
+        }
+
+        if ((typeof scopeSwitcherHandler) != 'undefined') {
+            var switcherParams = {
+                scopeId: scopeId,
+                scopeParams: scopeParams,
+                useConfirm: 0
+            };
+            scopeSwitcherHandler(switcherParams);
+        } else {
+            reload();
+        }
+
+        function reload() {
+            <?php if (!$this->_block->isUsingIframe()): ?>
+            var url = '<?php /* @escapeNotVerified */ echo $this->_block->getSwitchUrl() ?>' + scopeParams;
+            setLocation(url);
+            <?php else: ?>
+            jQuery('#preview_selected_store').val(scopeId);
+            jQuery('#preview_form').submit();
+
+            jQuery('.store-switcher .dropdown-menu li a').each(function() {
+                var $this = jQuery(this);
+
+                if ($this.data('role') === 'store-view-id' && $this.data('value') == scopeId) {
+                    jQuery('#store-change-button').html($this.text());
+                }
+            });
+
+            jQuery('#store-change-button').click();
+            <?php endif; ?>
+        }
+    }
+    
+    // window.bind('beforeunload', function(){
+    //   return 'Are you sure you want to leave?';
+    // });
+    
+    window.scopeSwitcherHandler = scopeSwitcherHandler;
+    window.switchScopeForTriggmine = switchScopeForTriggmine;
+
+});
+</script>
 <?php endif; ?>
 
 <style type="text/css">
