@@ -1,5 +1,4 @@
-<?php if ($this->helper('Triggmine\Connector\Helper\Data')->isEnabled()): ?>
-    <script type="text/javascript">
+    <script>
         /*global require*/
         require(['fingerprint2', 'jscookie', 'clientjs'], function(Fingerprint2, Cookies)
         {   
@@ -24,11 +23,3 @@
             });
         });
     </script>
-<?php else: ?>
-<!-- TriggMine module is not used! -->
-<script type="text/javascript">
-//<![CDATA[
-    console.warn("TriggMine module is not used!");
-//]]
-</script>
-<?php endif; ?>
