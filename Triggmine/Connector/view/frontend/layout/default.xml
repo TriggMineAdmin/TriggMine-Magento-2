@@ -2,7 +2,7 @@
     <body>
         <referenceContainer name="before.body.end">
             <block class="Magento\Framework\View\Element\Template"
-                   name="triggmine_init" template="Triggmine_Connector::init/init.phtml"/>
+                   name="triggmine_init" template="Triggmine_Connector::init/init.phtml" cacheable="false"/>
         </referenceContainer>
     </body>
 </page>

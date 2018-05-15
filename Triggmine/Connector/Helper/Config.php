@@ -5,7 +5,6 @@ namespace Triggmine\Connector\Helper;
 class Config extends \Magento\Framework\App\Helper\AbstractHelper
 {
     const MODULE_NAME           = 'Triggmine_Connector';
-    const VERSION_PLUGIN        = '3.0.24';
     
     /** API SECTION */
     const XML_PATH_CONNECTOR_API_ENABLED        = 'triggmine_connector_api_credentials/api/enabled';

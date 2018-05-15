@@ -1,3 +1,4 @@
+product export
 <div id="popup-modal">
     <p>Please wait while your products data is being exported to Triggmine. This popup will close automatically when the export is done.</p>
     <div id="triggmine-export-status"></div>
@@ -52,12 +53,13 @@
                             
     document.addEventListener('DOMContentLoaded', function() {
         var pages = <?= $this->_pages; ?>;
+        var pageSize = <?= $this->_productExportStep; ?>;
         
         var controllerUrl = "<?= $this->getUrl('triggmine_connector/export/exportproducts'); ?>";
         console.log('controller url: '+controllerUrl);
 
         var xhttp    = new XMLHttpRequest();
-        var bodyBase = 'apiURL=apiURL&apiToken=apiToken&pagesTotal='+pages+'&pageSize=pageSize&page=';
+        var bodyBase = 'apiURL=apiURL&apiToken=apiToken&pagesTotal='+pages+'&pageSize='+pageSize+'&page=';
                                 
         var exportStatus = document.getElementById('triggmine-export-status');
                                 

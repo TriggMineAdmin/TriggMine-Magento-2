@@ -15,6 +15,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     protected $_categoryFactory;
     protected $_request;
     protected $_debugEnabled;
+    protected $_moduleList;
 
     public function __construct(
         \Magento\Framework\App\Helper\Context $context,
@@ -25,7 +26,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager,
         \Magento\Catalog\Model\ProductFactory $productFactory,
         \Magento\Catalog\Model\CategoryFactory $categoryFactory,
-        \Magento\Framework\App\Request\Http $request
+        \Magento\Framework\App\Request\Http $request,
+        \Magento\Framework\Module\ModuleListInterface $moduleListInterface
     )
     {
         $this->_storeManager        = $storeManagerInterface;
@@ -36,6 +38,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $this->_productFactory      = $productFactory;
         $this->_categoryFactory     = $categoryFactory;
         $this->_request             = $request;
+        $this->_moduleList          = $moduleListInterface;
         $this->_debugEnabled        = ConnectorConfig::XML_PATH_CONNECTOR_DEBUG_ENABLED;
 
         parent::__construct($context);
@@ -127,7 +130,8 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     
     public function getVersionPlugin()
     {
-        return ConnectorConfig::VERSION_PLUGIN;
+        // return ConnectorConfig::VERSION_PLUGIN;
+        return $this->_moduleList->getOne(ConnectorConfig::MODULE_NAME)['setup_version'];
     }
     
     /**

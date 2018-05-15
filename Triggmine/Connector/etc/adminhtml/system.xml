@@ -30,14 +30,14 @@
                         <field id="enabled">1</field>
                     </depends>
                 </field>
+                <field id="scope" sortOrder="50" showInDefault="1" showInStore="0" showInWebsite="1">
+                    <frontend_model>Triggmine\Connector\Block\Adminhtml\System\Config\Scope</frontend_model>
+                </field>
                 <field id="product_export" sortOrder="30" showInDefault="0" showInStore="1" showInWebsite="1">
                     <frontend_model>Triggmine\Connector\Block\Adminhtml\System\Config\ProductExport</frontend_model>
                     <depends>
                         <field id="enabled">1</field>
                     </depends>
-                </field>
-                <field id="scope" sortOrder="50" showInDefault="1" showInStore="0" showInWebsite="1">
-                    <frontend_model>Triggmine\Connector\Block\Adminhtml\System\Config\Scope</frontend_model>
                 </field>
              </group>
         </section>
