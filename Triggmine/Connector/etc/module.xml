@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
-    <module name="Triggmine_Connector" setup_version="3.24.0"/>
+    <module name="Triggmine_Connector" setup_version="3.24.1"/>
 </config>
